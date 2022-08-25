@@ -6,13 +6,19 @@
         <link rel="stylesheet" type="text/css" href="~/PersonalWebApp.styles.css"/>
         <title>Personal WebApp | @ViewBag.Title</title>
     </head>
-    <body style="background-color: #232323;">
+    <body>
         <div class="header">
-            <a class="aheader @ViewBag.HomeHeader" href="@Url.Action("Index", "Home")">Home</a>
-            <a class="aheader @ViewBag.NewsHeader" href="@Url.Action("Index", "News")">News</a>
-            <a class="aheader @ViewBag.ProjectsHeader" href="@Url.Action("Index", "Projects")">Projects</a>
+            <div class="invisible">
+                <a class="abutton @ViewBag.HomeHeader" href="@Url.Action("Index", "Home")">Home</a>
+                <a class="abutton @ViewBag.NewsHeader" href="@Url.Action("Index", "News")">News</a>
+                <a class="abutton @ViewBag.ProjectsHeader" href="@Url.Action("Index", "Projects")">Projects</a>
+            </div>
+            <div class="invisible" id="divuser">
+                <a class="abutton auser @ViewBag.RegisterUserHeader" href="@Url.Action("Register", "User")">Register</a>
+                <a class="abutton auser @ViewBag.LoginUserHeader" href="@Url.Action("Login", "User")">Login</a>
+            </div>
         </div>
-        <div class="main">@RenderBody()</div>
+        <div class="article">@RenderBody()</div>
         <div class="footer">Footer.</div>
     </body>
 </html>

@@ -1,27 +1,21 @@
-﻿* {
-    font-size: 1vw;
-    color: #D0D0D0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-div {
-    background-color: #292929;
-}
-
-.header {
+﻿.header {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     width: 100vw;
+    height: 3vw;
+    overflow: visible;
     border-bottom: 1px solid #5B5B5B;
 }
 
-.main {
-    position: page;
+.article {
     border: 1px solid #5B5B5B;
-    margin-top: 4vw;
-    margin-bottom: 2vw;
+    margin-top: 5vw;
+    margin-left: 1vw;
+    margin-right: 1vw;
+    margin-bottom: 3vw;
+    padding: 1vw;
 }
 
 .footer {
@@ -30,13 +24,15 @@ div {
     right: 0;
     bottom: 0;
     width: 100vw;
+    height: 1.5vw;
+    overflow: hidden;
     border-top: 1px solid #5B5B5B;
     text-align: center;
 }
 
-.aheader {
+.abutton {
     background-color: #6400AA;
-    display: table-row;
+    display: block;
     border-left: 1px solid #C8C8C8;
     border-right: 1px solid #C8C8C8;
     border-bottom: 1px solid #C8C8C8;
@@ -46,16 +42,32 @@ div {
     text-decoration: none;
 }
 
-    .aheader:hover {
+    .abutton:hover {
         background-color: #9600FF;
         font-size: 1.2vw;
-        color: white;
-    }
+        color: #FFFFFF;
+    } 
 
-    .aheader.active {
+    .abutton.active {
         background-color: #BA00FF;
     }
 
-        .aheader.active:hover {
+        .abutton.active:hover {
             background-color: #FF64FD;
         }
+
+    .abutton.auser {
+        font-size: 1.2vw;
+        padding: 0.5vw;
+        border: 1px solid #C8C8C8;
+        border-radius: 0.5vw;
+    }
+    
+    .abutton.auser:hover {
+        font-size: 1.3vw;
+    }
+
+#divuser {
+    float: right;
+    margin-right: 5vw;
+}

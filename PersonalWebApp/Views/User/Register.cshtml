@@ -1,0 +1,42 @@
+﻿@model PersonalWebApp.Models.UserRegister
+@{
+    ViewBag.Title = "Registration";
+    ViewBag.RegisterUserHeader = "active";
+}
+<form asp-action="Register" asp-controller="User" asp-antiforgery="true">
+    <h1>Registration.</h1>
+    <table>
+        <tr>
+            <td>
+               Name:
+            </td>
+            <td>
+                <input asp-for="Name" type ="text"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input asp-for="Password" type="password"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Confirm password:
+            </td>
+            <td>
+                <input asp-for="ConfirmPassword" type="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Register"/>
+            </td>
+            <td>
+                <input type="reset" value="Reset" />
+            </td>
+        </tr>
+    </table>
+</form>

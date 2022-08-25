@@ -1,1 +1,29 @@
-﻿
+﻿* {
+    font-size: 1vw;
+    color: #D0D0D0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #232323;
+    color-scheme: dark;
+}
+
+div {
+    background-color: #292929;
+}
+
+input {
+    background-color: #6400AA;
+    border: 1px solid #5B5B5B;
+    accent-color: #9600FF;
+}
+
+    input:focus {
+        background-color: #9600FF;
+        border: 1px solid #D0D0D0;
+    }
+
+.invisible {
+    background-color: rgba(0, 0, 0, 0);
+}

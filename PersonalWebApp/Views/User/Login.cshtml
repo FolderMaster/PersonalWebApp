@@ -1,0 +1,39 @@
+﻿@model PersonalWebApp.Models.UserLogin
+@{
+    ViewBag.Title = "Login";
+    ViewBag.LoginUserHeader = "active";
+}
+<form asp-action="Login" asp-controller="User" asp-antiforgery="true">
+    <h1>Login.</h1>
+    <table>
+        <tr>
+            <td>
+                Name:
+            </td>
+            <td>
+                <input asp-for="Name" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input asp-for="Password" type="password" />
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input asp-for="RememberMe" type="checkbox" />Remember me.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Login"/>
+            </td>
+            <td>
+                <input type="reset" value="Reset"/>
+            </td>
+        </tr>
+    </table>
+</form>
