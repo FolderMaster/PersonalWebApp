@@ -1,6 +1,9 @@
-﻿using System.Drawing;
+﻿using Microsoft.EntityFrameworkCore;
 
 using PersonalWebApp.Models.Users;
+using PersonalWebApp.Models.Files;
+
+using File = PersonalWebApp.Models.Files.File;
 
 namespace PersonalWebApp.Models.Profiles
 {
@@ -14,7 +17,7 @@ namespace PersonalWebApp.Models.Profiles
 
         public string? Description { get; set; }
 
-        public byte[]? Avatar { get; set; }
+        public int? Avatar { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
@@ -22,14 +25,14 @@ namespace PersonalWebApp.Models.Profiles
         {
         }
 
-        public Profile(int id, int userId, string nick, string description, byte[]? avatar, DateTime
+        public Profile(int id, int userId, string nick, string description, int avatarId, DateTime
             createdDate)
         {
             Id = id;
             UserId = userId;
             Nick = nick;
             Description = description;
-            Avatar = avatar;
+            Avatar = avatarId;
             CreatedDate = createdDate;
         }
 
@@ -42,12 +45,23 @@ namespace PersonalWebApp.Models.Profiles
             CreatedDate = DateTime.Now;
         }
 
-        public Profile(User u, ProfileEditor editor)
+        public Profile(User u, ProfileEditor editor, IWebHostEnvironment webHostEnvironment,
+            FileDbContext fileContext)
         {
             UserId = u.Id;
             Nick = editor.Nick;
             Description = editor.Description;
-            Avatar = editor.Avatar;
+
+            File? file = FileUploader.Upload(editor.Avatar, webHostEnvironment, fileContext).Result;
+            if(file == null)
+            {
+                Avatar = null;
+            }
+            else
+            {
+                Avatar = file.Id;
+            }
+
             CreatedDate = DateTime.Now;
         }
     }

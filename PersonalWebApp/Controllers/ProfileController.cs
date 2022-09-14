@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using PersonalWebApp.Models.Files;
 using PersonalWebApp.Models.Profiles;
 using PersonalWebApp.Models.Users;
 
@@ -8,13 +8,22 @@ namespace PersonalWebApp.Controllers
     public class ProfileController : Controller
     {
         private UserDbContext _userDb;
+
+        private FileDbContext _fileDb;
         
         private ProfileDbContext _profileDb;
 
-        public ProfileController(UserDbContext userDb, ProfileDbContext profileDb)
+        private IWebHostEnvironment _webHostEnvironment;
+
+        public ProfileController(UserDbContext userDb, FileDbContext fileDb, ProfileDbContext
+            profileDb, IWebHostEnvironment webHostEnvironmentl)
         {
             _userDb = userDb;
+            _fileDb = fileDb;
             _profileDb = profileDb;
+            _webHostEnvironment = webHostEnvironmentl;
+
+            FileDownloader.FileDb = _fileDb;
         }
 
         public async Task<IActionResult> Index(string name)
@@ -47,7 +56,7 @@ namespace PersonalWebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(ProfileEditor editor)
         {
-            await ProfileEditor.Edit(await UserDisplay.Display(User.Identity.Name, _userDb), editor, _profileDb);
+            await ProfileEditor.Edit(await UserDisplay.Display(User.Identity.Name, _userDb), editor, _webHostEnvironment, _fileDb, _profileDb);
             Profile? profile = await ProfileDisplay.Display(User.Identity.Name, _profileDb, _userDb);
             if(profile == null)
             {

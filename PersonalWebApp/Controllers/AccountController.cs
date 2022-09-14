@@ -98,7 +98,7 @@ namespace PersonalWebApp.Controllers
             User? user = await GetUser(User.Identity.Name);
             if(user == null)
             {
-                return Unauthorized("Hui");
+                return Unauthorized();
             }
             else
             {

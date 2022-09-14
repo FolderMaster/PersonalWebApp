@@ -1,10 +1,11 @@
 ﻿@model Profile
 @{
     ViewBag.Title = "Profile " + Model.Nick;
+    ViewBag.Path = FileDownloader.DownloadPath(Model.Avatar.GetValueOrDefault());
 }
 @Model.Id
 @Model.Nick
-@Model.Avatar
+<img src="@Url.Content(Path)"/>
 @Model.UserId
 @Model.CreatedDate.ToLocalTime()
 @Model.Description

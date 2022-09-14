@@ -19,6 +19,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="wwwroot\JS\" />
+    <Folder Include="wwwroot\Files\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="https://json.schemastore.org/asconfig-schema.json" /></VisualStudio></ProjectExtensions>

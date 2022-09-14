@@ -1,6 +1,7 @@
-﻿using System.Drawing;
+﻿using Microsoft.EntityFrameworkCore;
 
 using PersonalWebApp.Models.Users;
+using PersonalWebApp.Models.Files;
 
 namespace PersonalWebApp.Models.Profiles
 {
@@ -10,16 +11,17 @@ namespace PersonalWebApp.Models.Profiles
 
         public string? Description { get; set; }
 
-        public byte[]? Avatar { get; set; }
+        public IFormFile? Avatar { get; set; }
 
         public ProfileEditor()
         {
         }
 
-        public static async Task Edit(User u, ProfileEditor editor, ProfileDbContext dbContext)
+        public static async Task Edit(User u, ProfileEditor editor, IWebHostEnvironment
+            webHostEnvironment, FileDbContext fileContext, ProfileDbContext profileContext)
         {
-            dbContext.Profiles.Add(new Profile(u, editor));
-            await dbContext.SaveChangesAsync();
+            profileContext.Profiles.Add(new Profile(u, editor, webHostEnvironment, fileContext));
+            await profileContext.SaveChangesAsync();
         }
     }
 }

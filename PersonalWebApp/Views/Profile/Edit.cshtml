@@ -1,6 +1,8 @@
 ﻿@model Profile
 @{
     ViewBag.Title = "Edit profile";
+    ViewBag.Path = FileDownloader.DownloadPath(Model.Avatar.GetValueOrDefault());
+    ViewBag.Null = null;
 }
 <table>
     <tr>
@@ -50,6 +52,10 @@
             </td>
             <td>
                 <input asp-for="Avatar" type="file" />
+                @if(ViewBag.Path is string path)
+                {
+                    <img src="@Url.Content(path)" />
+                }
             </td>
         </tr>
         <tr>

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 using PersonalWebApp.Models.Profiles;
 using PersonalWebApp.Models.Users;
+using PersonalWebApp.Models.Files;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,14 @@ builder.Services.AddDbContext<UserDbContext>(options => {
 });
 
 builder.Services.AddDbContext<ProfileDbContext>(options => {
+    options.UseSqlServer(builder.Configuration["Connection:UserDb"],
+    sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    });
+});
+
+builder.Services.AddDbContext<FileDbContext>(options => {
     options.UseSqlServer(builder.Configuration["Connection:UserDb"],
     sqlServerOptionsAction: sqlOptions =>
     {

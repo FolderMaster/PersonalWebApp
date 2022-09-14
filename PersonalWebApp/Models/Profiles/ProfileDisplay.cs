@@ -14,7 +14,8 @@ namespace PersonalWebApp.Models.Profiles
             }
             else
             {
-                return await profileDb.Profiles.OrderByDescending(profile => profile.CreatedDate).FirstOrDefaultAsync(profile => profile.UserId == user.Id);
+                return await profileDb.Profiles.OrderByDescending(profile => profile.CreatedDate).
+                    FirstOrDefaultAsync(profile => profile.UserId == user.Id);
             }
         }
 
