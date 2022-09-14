@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using PersonalWebApp.Models;
+
+using PersonalWebApp.Models.Profiles;
+using PersonalWebApp.Models.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,8 +16,15 @@ builder.Services.AddDbContext<UserDbContext>(options => {
     });
 });
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).
-    AddCookie(options => options.LoginPath = new PathString("/Account/Login"));
+builder.Services.AddDbContext<ProfileDbContext>(options => {
+    options.UseSqlServer(builder.Configuration["Connection:UserDb"],
+    sqlServerOptionsAction: sqlOptions =>
+    {
+        sqlOptions.EnableRetryOnFailure();
+    });
+});
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
 
 var app = builder.Build();
 
@@ -29,5 +38,7 @@ app.UseHttpsRedirection();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseStatusCodePagesWithReExecute("/StatusCodes/Index", "?statusCode={0}");
 
 app.Run();

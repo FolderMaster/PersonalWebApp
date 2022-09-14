@@ -1,9 +1,10 @@
-﻿@model PersonalWebApp.Models.UserLogin
+﻿@model UserLogin
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Sign In";
     ViewBag.LoginUserHeader = "active";
 }
-<form asp-action="Login" asp-controller="User" asp-antiforgery="true">
+<form asp-action="SignIn" asp-controller="Account" asp-antiforgery="true">
+    <input type="hidden" name="RefererUrl" value="@ViewBag.RefererUrl"/>
     <h1>Login.</h1>
     <table>
         <tr>
@@ -29,7 +30,7 @@
         </tr>
         <tr>
             <td>
-                <input type="submit" value="Login"/>
+                <input type="submit" value="Sign In"/>
             </td>
             <td>
                 <input type="reset" value="Reset"/>

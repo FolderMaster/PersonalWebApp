@@ -1,0 +1,10 @@
+﻿@model Profile
+@{
+    ViewBag.Title = "Profile " + Model.Nick;
+}
+@Model.Id
+@Model.Nick
+@Model.Avatar
+@Model.UserId
+@Model.CreatedDate.ToLocalTime()
+@Model.Description

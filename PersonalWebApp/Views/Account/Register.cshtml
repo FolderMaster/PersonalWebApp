@@ -1,9 +1,10 @@
-﻿@model PersonalWebApp.Models.UserRegister
+﻿@model UserRegistration
 @{
-    ViewBag.Title = "Registration";
+    ViewBag.Title = "Register";
     ViewBag.RegisterUserHeader = "active";
 }
-<form asp-action="Register" asp-controller="User" asp-antiforgery="true">
+<form asp-action="Register" asp-controller="Account" asp-antiforgery="true">
+    <input type="hidden" name="RefererUrl" value="@ViewBag.RefererUrl" />
     <h1>Registration.</h1>
     <table>
         <tr>

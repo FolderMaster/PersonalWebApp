@@ -7,4 +7,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="Phone" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="be6e4268-486d-4849-9a3a-566fac49643e" ChangeDateTime="08/26/2022 12:48:46">
+    <Property Name="ElementName" Value="[dbo].[Users].[Rights]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Users]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Role" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c81b98c6-6067-416d-8ec6-499596b9e804" ChangeDateTime="08/28/2022 07:15:20">
+    <Property Name="ElementName" Value="[dbo].[FK_Profiles_ToTable]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[Profiles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_Profiles_Users]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3a37c189-a2dc-4244-8b17-e6c993eca731" ChangeDateTime="08/28/2022 07:16:40">
+    <Property Name="ElementName" Value="[dbo].[Profiles].[UserID]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Profiles]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="UserId" />
+  </Operation>
 </Operations>

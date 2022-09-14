@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace PersonalWebApp.Models
+namespace PersonalWebApp.Models.Users
 {
     public class UserLogin
     {
@@ -14,14 +14,7 @@ namespace PersonalWebApp.Models
         {
         }
 
-        public UserLogin(string name, string password, bool rememberMe)
-        {
-            Name = name;
-            Password = password;
-            RememberMe = rememberMe;
-        }
-
-        public static async Task<User?> Login(UserLogin login, UserDbContext dbContext)
+        public static async Task<User?> SignIn(UserLogin login, UserDbContext dbContext)
         {
             return await dbContext.Users.FirstOrDefaultAsync(user => user.Name == login.Name && user.Password == login.Password);
         }

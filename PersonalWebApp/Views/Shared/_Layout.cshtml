@@ -11,12 +11,33 @@
             <div class="invisible">
                 <a class="abutton @ViewBag.HomeHeader" href="@Url.Action("Index", "Home")">Home</a>
                 <a class="abutton @ViewBag.NewsHeader" href="@Url.Action("Index", "News")">News</a>
-                <a class="abutton @ViewBag.ProjectsHeader" href="@Url.Action("Index", "Projects")">Projects</a>
+                <a class="abutton @ViewBag.ProjectsHeader" href="@Url.Action("Index", "Projects")">
+                    Projects</a>
             </div>
-            <div class="invisible" id="divuser">
-                <a class="abutton auser @ViewBag.RegisterUserHeader" href="@Url.Action("Register", "User")">Register</a>
-                <a class="abutton auser @ViewBag.LoginUserHeader" href="@Url.Action("Login", "User")">Login</a>
-            </div>
+            
+                @if(User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown" id="divuser">
+                        <div class="dropdown-head">
+                            @User.Identity.Name
+                        </div>
+                        <div class="dropdown-content">
+                            <a class="auser" href="@Url.Action("Edit", "Account")">Edit account</a>
+                            <a class="auser" href="@Url.Action("Index", "Profile", new {name = User.Identity.Name})">Profile</a>
+                            <a class="auser" href="@Url.Action("Edit", "Profile")">Edit profile</a>
+                            <a class="auser" href="@Url.Action("LogOut", "Account")">Log Out</a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="invisible" id="divuser">
+                        <a class="abutton auser @ViewBag.RegisterUserHeader"
+                            href="@Url.Action("Register", "Account")">Register</a>
+                        <a class="abutton auser @ViewBag.LoginUserHeader"
+                            href="@Url.Action("SignIn", "Account")">Sign In</a>
+                    </div>
+                }
         </div>
         <div class="article">@RenderBody()</div>
         <div class="footer">Footer.</div>

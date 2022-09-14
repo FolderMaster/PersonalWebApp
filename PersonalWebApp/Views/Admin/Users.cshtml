@@ -1,0 +1,61 @@
+﻿@model IAsyncEnumerable<User>
+@{
+    ViewBag.Title = "Users";
+}
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Password
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Phone
+        </th>
+        <th>
+            Role
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            CreatedDate
+        </th>
+    </tr>
+    @await foreach (User user in Model)
+    {
+        <tr>
+            <td>
+                @user.Id
+            </td>
+            <td>
+                @user.Name
+            </td>
+            <td>
+                @user.Password
+            </td>
+            <td>
+                @user.Email
+            </td>
+            <td>
+                @user.Phone
+            </td>
+            <td>
+                @user.Role
+            </td>
+            <td>
+                @user.Status
+            </td>
+            <td>
+                @user.CreatedDate
+            </td>
+        </tr>
+    }
+</table>

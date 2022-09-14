@@ -1,0 +1,57 @@
+﻿@model User
+@{
+    ViewBag.Title = "Edit Account";
+    ViewBag.EditUserHeader = "active";
+}
+<table>
+    <tr>
+        <td>
+            Id:
+        </td>
+        <td>
+            @Model.Id
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Name:
+        </td>
+        <td>
+            @Model.Name
+        </td>
+    </tr>
+    <form asp-action="Edit" asp-controller="Account" asp-antiforgery="true">
+        <tr>
+            <td>
+                Password:
+            </td>
+            <td>
+                <input asp-for="Password" type="password" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Email:
+            </td>
+            <td>
+                <input asp-for="Email" type="email" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Phone:
+            </td>
+            <td>
+                <input asp-for="Phone" type="tel" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Edit" />
+            </td>
+            <td>
+                <input type="reset" value="Reset" />
+            </td>
+        </tr>
+    </form>
+</table>

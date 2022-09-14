@@ -1,0 +1,64 @@
+﻿@model Profile
+@{
+    ViewBag.Title = "Edit profile";
+}
+<table>
+    <tr>
+        <td>
+            Id:
+        </td>
+        <td>
+            @Model.Id
+        </td>
+    </tr>
+    <tr>
+        <td>
+            User id:
+        </td>
+        <td>
+            @Model.UserId
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Created date:
+        </td>
+        <td>
+            @Model.CreatedDate.ToLocalTime()
+        </td>
+    </tr>
+    <form asp-action="Edit" asp-controller="Profile" asp-antiforgery="true">
+        <tr>
+            <td>
+                Nick:
+            </td>
+            <td>
+                <input asp-for="Nick" type="tel" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Description:
+            </td>
+            <td>
+                <input asp-for="Description" type="text" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Avatar:
+            </td>
+            <td>
+                <input asp-for="Avatar" type="file" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="submit" value="Edit" />
+            </td>
+            <td>
+                <input type="reset" value="Reset" />
+            </td>
+        </tr>
+    </form>
+</table>
